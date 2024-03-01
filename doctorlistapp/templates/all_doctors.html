@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Inventory App</title>
+    </head>
+    <body>
+        <main>
+            <div>
+                <h1>doctors</h1>
+            </div>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Full Name
+                            </th>
+                            <th>
+                                Hospital
+                            </th>
+                            <th>
+                                Practice
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for doctor in doctors%}
+                        <tr>
+                            <td>
+                                {{doctor.f_name}} {{doctor.l_name}}
+                            </td>
+                            <td>
+                                {{doctor.hospital}}
+                            </td>
+                            <td>
+                                {{doctor.practice}}
+                            </td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </body>
+</html>
