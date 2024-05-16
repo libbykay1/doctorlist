@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HLC Pending Doctors</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <style>
+
+        #search {
+    width: 400px;
+    max-width: 100%;
+    height: 30px;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    border-radius: 15px;
+    background-color: rgb(146, 147, 151);
+}
+
+.card {
+padding: 5px 15px;
+}
+
+.doctor-img {
+    height: 150px;
+}
+
+body {
+    display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color:#333;
+    background-color: #a3a3a3;
+  }
+
+  main{flex: 1;}
+   a {
+        color:#333;
+
+   }
+
+   .hamburger-menu {
+  background-color: transparent;
+  border: none;
+  padding: 15px;
+}
+
+.hamburger-menu .icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 1px;
+}
+
+.hamburger-menu .icon-bar + .icon-bar {
+  margin-top: 4px;
+}
+
+
+button {
+    height: 32px;
+    margin: 10px;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    border-radius: 15px;
+    background-color: rgb(146, 147, 151);
+
+  }
+
+::placeholder {
+  color: #333;
+  opacity: 1; /* Firefox */
+    }
+
+.container {
+  display: flex;
+  flex-direction: row;
+    justify-content: center;
+    flex-wrap:wrap
+
+}
+
+.container-navl {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.container-navr {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  width: 50%;
+}
+
+    </style>
+</head>
+
+
+    <body>
+        <header>
+
+
+        <div>
+            <nav class="navbar navbar-inverse">
+                <div class="container-navl">
+                  <div class="navbar-header">
+
+                    <a class="navbar-brand" href="{% url 'get_all_doctors' %}">HLC Search</a>
+                  </div>
+                  <div>
+                    <form action="{% url 'get_all_doctors' %}">
+                    <label for="search"></label>
+                    <input type="search" name="search" id="search" placeholder="Search Example. Name, Hospital, ect."/>
+                    <button>
+                        Search
+                    </button>
+                    </form>
+                  </div>
+
+                  <div class="container-navr">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="dropdown">
+                        <a class="hamburger-menu" data-toggle="dropdown" href="#">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Patients</a></li>
+                          <li><a href="{% url 'create_doctor' %}">Suggest New Doctor</a></li>
+                          <li><a href="#">Account Info</a></li>
+                          <li><a href="#">Logout</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+              </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+doctor.doctor_url
+
+        <div class="container">
+        {%for doctor in doctors%}
+        <a target="_blank" href="{% url 'get_doctor_by_id' %}">
+
+        <div class="card">
+            <img class="doctor-img" src={{doctor.doctor_img_url}} alt="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"/>
+            <br>
+            {{doctor.first_name}} {{doctor.last_name}}
+            <br>
+            {{doctor.hospital}}
+
+        </div>
+        </a>
+        {%endfor%}
+        </div>
+    </main>
+        <footer>
+            <div>
+                Contact Us<br>
+                Phone: (408) 831-2727<br>
+                Email: Email.com
+            </div>
+        </footer>
+    </body>
+    </html>

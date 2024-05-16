@@ -149,14 +149,30 @@ button {
     </div>
 </header>
 <main>
-    <main>
-        <div class="container">
-            <form method="post">
-                {% csrf_token %}
-                {{ doctor_form.as_p}}
-                <button>Create</button>
-            </form>
+
+
+    <div class="container">
+    {%for doctor in doctors%}
+    <a target="_blank" href={{doctor.doctor_url}}>
+
+    <div class="card">
+        <img class="doctor-img" src={{doctor.doctor_img_url}} alt="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"/>
+        <br>
+        {{doctor.first_name}} {{doctor.last_name}}
+        <br>
+        {{doctor.hospital}}
+
+    </div>
+    </a>
+    {%endfor%}
+    </div>
+</main>
+    <footer>
+        <div>
+            Contact Us<br>
+            Phone: (408) 831-2727<br>
+            Email: Email.com
         </div>
-    </main>
+    </footer>
 </body>
 </html>

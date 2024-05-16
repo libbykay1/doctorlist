@@ -4,12 +4,37 @@ from .forms import DoctorForm
 
 
 def get_all_doctors(request):
-    doctors = Doctor.objects.all()
-    all_doctors_template = "all_doctors.html"
+
+    search_term = request.GET.get('search')
+    if search_term:
+        doctors = Doctor.objects.filter(tags__icontains=search_term, status=True)
+    else:
+        doctors = Doctor.objects.filter(status=True)
+    all_doctors_template = "home.html"
     context = {
         "doctors": doctors
     }
     return render(request, all_doctors_template, context)
+
+
+def get_pending_doctors(request):
+
+    doctors = Doctor.objects.filter(status=False)
+    pending_doctors_template = "pending.html"
+    context = {
+        "doctors": doctors
+    }
+    return render(request, pending_doctors_template, context)
+
+
+def search_doctors(request, search_term):
+    doctors = Doctor.objects.filter(tags__icontains=search_term)
+
+    search_result_template = "search_result.html"
+    context = {
+        "doctors": doctors
+    }
+    return render(request, search_result_template, context)
 
 
 def get_doctor_by_id(request, id):

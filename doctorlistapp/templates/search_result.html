@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HLC Home</title>
+    <style>
+
+        #search {
+    width: 400px;
+    height: 20px;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.card {
+padding: 5px 15px;
+}
+
+.doctor-img {
+    height: 150px;
+}
+
+body {
+    display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+
+  main{flex: 1;}
+
+button {
+    height: 26.5px;
+    margin: 50px;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
+  }
+
+.container {
+  display: flex;
+  flex-direction: row;
+    justify-content: center;
+    flex-wrap:wrap
+
+}
+
+    </style>
+</head>
+<body>
+    <header>
+    <div>
+        <nav>
+          <ul>
+            <li><a href="{% url 'get_all_doctors' %}">Home</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Account Info</a></li>
+            <li><a href="#">Patients</a></li>
+          </ul>
+        </nav>
+    </div>
+    <div>
+        <label for="search"></label>
+        <input type="text" name="search" id="search" placeholder="Search Example. Name, Hospital, ect."/>
+        <button>
+            Search
+        </button>
+    </div>
+</header>
+<main>
+
+
+    <div class="container">
+    {%for doctor in doctors%}
+    <a target="_blank" href={{doctor.doctor_url}}>
+
+    <div class="card">
+        <img class="doctor-img" src={{doctor.doctor_img_url}} alt="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"/>
+        <br>
+        {{doctor.f_name}} {{doctor.l_name}}
+        <br>
+        {{doctor.hospital}}
+
+    </div>
+    </a>
+    {%endfor%}
+    </div>
+</main>
+    <footer>
+        <div>
+            Contact Us<br>
+            Phone: (408) 831-2727<br>
+            Email: Email.com
+        </div>
+    </footer>
+</body>
+</html>

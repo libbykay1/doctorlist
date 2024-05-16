@@ -6,8 +6,8 @@ from .models import Doctor
 class DoctorAdmin(admin.ModelAdmin):
 	list_display = (
 		"id",
-        "f_name",
-	    "l_name",
+        "first_name",
+	    "last_name",
 		"hospital",
 		"practice",
 		"years_of_experience",

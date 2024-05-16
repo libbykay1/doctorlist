@@ -6,9 +6,12 @@ class DoctorForm (ModelForm):
     class Meta:
         model = Doctor
         fields = [
-            "f_name",
-            "l_name",
+            "first_name",
+            "last_name",
             "hospital",
             "practice",
             "years_of_experience",
+            "doctor_url",
+            "doctor_img_url",
         ]
+# class SearchForm(Form):
