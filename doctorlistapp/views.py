@@ -67,6 +67,7 @@ def edit_doctor(request, id):
         form = DoctorForm(request.POST, instance=doctor)
         if form.is_valid():
             form.save()
+            doctor.approve_doctor()
             return redirect("get_all_doctors")
 
     else:

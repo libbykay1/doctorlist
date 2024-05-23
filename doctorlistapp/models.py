@@ -11,3 +11,11 @@ class Doctor(models.Model):
     years_of_experience = models.PositiveIntegerField(blank=True)
     tags = models.TextField(null=True)
     status = models.BooleanField(null=True, default=False)
+
+    def approve_doctor(self):
+        self.first_name = self.first_name.capitalize()
+        self.last_name = self.last_name.capitalize()
+        self.hospital = self.hospital.capitalize()
+        self.tags = f"{self.first_name}, {self.last_name}, {self.hospital}, {self.practice}"
+        self.status = True
+        self.save()
